@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+
+
+   {% if messages %}
+{% for msg in messages %}
+
+<p {% if msg.tags %}class="alert alert-{{msg.tags}} mb-3" {% endif %}>{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% comment %}  class="shadow p-5" {% endcomment %}
+   <form method="post" > 
+   {% csrf_token %}
+   {% for fm in form %}
+   
+    
+   {{fm.label}}{{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>   
+
+   
+   {% endfor %} 
+  <button type="submit" class="form-control btn-danger">Submit</button>
+ 
+   </form>
+ <a href="{% url 'email' %}"><button class="btn-success">Resend</button></a>
+
+</div>
+</div>
+</div>
+{% endblock main-content %}

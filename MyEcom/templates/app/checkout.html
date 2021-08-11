@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row mt-5">
+  <div class="col-sm-6">
+    <h4>Order Summary</h4>
+    <hr>
+     {% for ordp in orders %}
+      <div class="card mb-2">
+     
+        <div class="card-body">
+        
+          <h5>Product: Product {{orpd.product.id}}</h5>
+          <p>Quantity: {{ordp.quantity}}</p>
+          <p class="fw-bold">Price: {{ordp.product.selling_price}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    <small>Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe! Iure optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam, accusantium adipisci nisi nihil in et quis?</small>
+  </div>
+  <div class="col-sm-4 offset-sm-1">
+    <h4>Select Shipping Address</h4>
+    <hr>
+  
+    {% for cust in customer %}
+      <div class="card">
+        <div class="card-body">
+        <h5>{{cust.name}}</h5>
+        <p>{{cust.address}} {{cust.city}} {{cust.state}}</p>
+        </div>
+      </div>
+        <form action="" method="post">
+   {% csrf_token %}
+        <div class="form-check mt-2 mb-5">
+          <input class="form-check-input" type="radio" name="flexRadioDefault"  value="{{cust.id}}" >
+          <label class="form-check-label fw-bold" for="">
+            Address: {{cust.id}} </label>
+        </div>
+        {% endfor %}
+        <div class="text-end">
+          <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

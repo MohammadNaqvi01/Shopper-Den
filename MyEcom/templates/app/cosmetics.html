@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+  <ul class="list-group">
+  <a href="{% url 'cosmetics' %}" class="btn"><li class="list-group-item">All Cosmetics</li></a> 
+ <a href="{% url 'cosmeticdata' 'below' %}" class="btn"><li class="list-group-item">Under 4700</li></a> 
+  <a href="{% url 'cosmeticdata' 'above' %}" class="btn"><li class="list-group-item">Above 4700</li></a> 
+
+
+</ul>
+  </div>
+ 
+  <div class="col-sm-8 offset-sm-1">
+   {% for cosmetic in cosmetics %}
+  <div class="text-center">
+     <a href="{% url 'product-detail' cosmetic.id %}">
+
+  <img src="{{cosmetic.product_image.url}}" height="200px" alt="" class=""></a>
+  <div class="fw-bold">{{cosmetic.title}}</div> 
+    <div class="fw-bold">{{cosmetic.selling_price}}</div>
+  
+
+   
+     </div>
+
+      
+   {% endfor %}
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

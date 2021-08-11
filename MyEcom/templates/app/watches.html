@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+   <div class="col-sm-3">
+<ul class="list-group">
+  <a href="{% url 'watches' %}" class="btn"><li class="list-group-item">All Watches</li></a> 
+ <a href="{% url 'watchdata' 'below' %}" class="btn"><li class="list-group-item">Under 760</li></a> 
+  <a href="{% url 'watchdata' 'above' %}" class="btn"><li class="list-group-item">Above 760</li></a> 
+
+
+</ul>
+  </div>
+ 
+  <div class="col-sm-8 offset-sm-1">
+   {% for watch in watches %}
+    <div class="text-center">
+     <a href="{% url 'product-detail' watch.id %}">
+
+  <img src="{{watch.product_image.url}}" height="200px" alt="" class=""></a>
+  <div class="fw-bold">{{watch.title}}</div> 
+    <div class="fw-bold">{{watch.selling_price}}</div>
+  
+
+   
+     </div>
+
+      
+   {% endfor %}
+  </div>
+ </div>
+</div>
+{% endblock main-content %}}

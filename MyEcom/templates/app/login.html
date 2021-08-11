@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Login</h3>
+   <hr>
+   
+
+   
+    {% for msg in messages %}
+     
+     {{msg}}
+    
+    {% endfor %}
+    
+
+   <form action="" method="post" novalidate class="shadow p-5">
+    {% csrf_token %}
+
+
+    {% for fm in form %}
+    
+
+    
+    
+    {{fm.label}}{{fm}}<small class="text-danger">{{fm.errors|striptags}}</small>
+
+    {% endfor %}
+     <button type="submit" class="btn btn-primary">Submit</button>
+ 
+
+  </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
