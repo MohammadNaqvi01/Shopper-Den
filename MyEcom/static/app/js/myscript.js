@@ -39,8 +39,8 @@ $(document).ready(function(){
             success:function(data){
               
               eml.innerText=data.quantity
-              document.getElementById("amount").innerText=data.amount
-              document.getElementById("total").innerText=data.total
+              document.getElementById("amount").innerText=data.amount+'.0'
+              document.getElementById("total").innerText=data.total+'.0'
               
             }
         });
@@ -79,16 +79,15 @@ $(document).ready(function(){
                 alert(data.quantity)  
                 if(data.quantity==0){
                     rmv.remove()
-                    document.getElementById("amount").innerText=data.amount
-                    document.getElementById("total").innerText=data.total
-                  
+                    document.getElementById("amount").innerText=data.amount+'.0'
+                    document.getElementById("total").innerText=data.total+'.0'
                 }
                 else{
 
                 
                 eml.innerText=data.quantity
-                document.getElementById("amount").innerText=data.amount
-                document.getElementById("total").innerText=data.total
+                document.getElementById("amount").innerText=data.amount+'.0'
+                document.getElementById("total").innerText=data.total+'.0'
                 }
                 alert("done")
               //eml.innerText=data.quantity

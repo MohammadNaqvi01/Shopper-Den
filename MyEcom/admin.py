@@ -4,7 +4,8 @@ from .models import (
     Product,
     Cart,
     OrderPlaced,
-    Confirm
+    Confirm,
+    TempCart
 )
 # Register your models here.
 @admin.register(Customer)
@@ -28,3 +29,7 @@ class OrderPlacedModelAdmin(admin.ModelAdmin):
 @admin.register(Confirm)
 class ConfirmModelAdmin(admin.ModelAdmin):
     list_display=['id','user','otp']
+
+@admin.register(TempCart)
+class TempCartModelAdmin(admin.ModelAdmin):
+    list_display=['id','user','product','quantity']

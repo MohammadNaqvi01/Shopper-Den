@@ -14,8 +14,8 @@ class CustomerRegisterationForm(UserCreationForm):
     email=forms.CharField(required=True,widget=forms.EmailInput(attrs={'class':'form-control'}))
     class Meta:
          model=User
-         #weird 
-         fields=('username','email','password1','password2')
+
+         fields=['username','email','password1','password2']
 
          labels={'email':'Email'}    
          widgets={'username':forms.TextInput(attrs={'class':'form-control'})}
@@ -25,10 +25,10 @@ class CustomerRegisterationForm(UserCreationForm):
 
 
 
-#LOGIN using AUThentication form
+#LOGIN using Authentication form
 class LoginForm(AuthenticationForm):
      username=UsernameField(widget=forms.TextInput(attrs={'class':'form-control'}))
-     password=UsernameField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+     password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
 
 
 

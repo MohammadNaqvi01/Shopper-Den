@@ -10,6 +10,9 @@ urlpatterns = [
 
     
     path('home/', views.home,name="email"),
+    path('payment/', views.homepage, name='payment'),
+    path('payment/proceed/', views.paymenthandler, name='paymentproceed'),
+    
     path('',views.ProductView.as_view(),name="home"),
     path('product-detail/<int:pk>',views.ProductDetailView.as_view(), name='product-detail'),
     path('add-to-cart/', views.AddToCartView.as_view(), name='add-to-cart'),
@@ -37,7 +40,7 @@ urlpatterns = [
     path('cosmetics/<slug:data>', views.cosmetics, name='cosmeticdata'),
     
     
-    path('login/', auth_view.LoginView.as_view(template_name="app/login.html",authentication_form=LoginForm),name="login"),
+    path('login/', views.LoginView.as_view(),name="login"),
     path('logout/', auth_view.LogoutView.as_view(),name="logout"),
 
     path('passwordchangedone/',auth_view.PasswordChangeDoneView.as_view(template_name="app/passwordchangedone.html"),name="passwordchangedone"),

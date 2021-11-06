@@ -58,9 +58,10 @@ class Cart(models.Model):
 
     def __str__(self):
         return   str(self.id)
-@property
-def total_cost(self):
-    return self.quantity*self.product.selling_price
+    
+    @property
+    def total_cost(self):
+     return self.quantity*self.product.selling_price
 
 
 
@@ -82,7 +83,19 @@ class OrderPlaced(models.Model):
     quantity=models.PositiveIntegerField(default=1)
     ordered_date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(max_length=50,choices=STATUS_CHOICES,default='Pending')
+    
+    @property
+    def total_cost(self):
+     return self.quantity*self.product.selling_price
 
 class Confirm(models.Model):
       user=models.CharField(max_length=15)
       otp=models.IntegerField()
+
+class TempCart(models.Model):
+    user=models.CharField(max_length=150)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    quantity=models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return   str(self.id)

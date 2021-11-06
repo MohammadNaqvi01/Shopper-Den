@@ -21,10 +21,10 @@
     {% csrf_token %}
 
 
-    {% for fm in form %}
+    {% for fm in fm %}
     
 
-    
+           
     
     {{fm.label}}{{fm}}<small class="text-danger">{{fm.errors|striptags}}</small>
 
